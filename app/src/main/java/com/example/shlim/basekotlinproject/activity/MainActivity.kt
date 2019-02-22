@@ -1,13 +1,17 @@
-package com.example.shlim.basekotlinproject
+package com.example.shlim.basekotlinproject.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.shlim.basekotlinproject.R
+import com.example.shlim.basekotlinproject.Utils.LogUtil
+import com.example.shlim.basekotlinproject.Utils.Util
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    val TAG = MainActivity::class.simpleName
 
     val permissions = arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -23,12 +27,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         checkPermission()
+
+
+        val serialNum = Util.getSerialNumber(this)
+        LogUtil.d(TAG, "SerialNum : $serialNum")
+
+
+        LogUtil.writeLog(this, TAG, "하하하하1")
+        LogUtil.writeLog(this, TAG, "하하하하2")
+        LogUtil.writeLog(this, TAG, "하하하하3")
+        LogUtil.writeLog(this, TAG, "하하하하4")
+        LogUtil.writeLog(this, TAG, "하하하하5")
+
+
     }
 
 
     fun checkPermission() {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return;
+            return
         }
 
         for(permission : String in permissions) {
