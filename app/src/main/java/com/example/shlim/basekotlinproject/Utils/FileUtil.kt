@@ -33,6 +33,19 @@ class FileUtil {
                 return cxt.cacheDir.absolutePath + "/"
             }
         }
+
+        /**
+         * path에 해당하는 파일을 삭제한다.
+         * @param path
+         */
+        fun deleteFile(path : String) : Boolean {
+            val file = File(path)
+            return file.delete()
+        }
+
+
+
+
     }
 
 }

@@ -8,8 +8,6 @@ class BaseKotlinApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()
-
-        createAppDirectory()
     }
 
     /**
