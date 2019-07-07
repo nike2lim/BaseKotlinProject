@@ -39,6 +39,23 @@ class LogUtil {
             }
         }
 
+        /**
+         * TAG를 가져온다.
+         * @return
+         */
+        fun getTag() : String {
+            val level = 4
+            val trace = Thread.currentThread().stackTrace[level]
+            val fileName = trace.fileName
+            val classPath = trace.className
+            val className = classPath.substring(classPath.lastIndexOf(".") + 1)
+            val methodName = trace.methodName
+            val lineNumber = trace.lineNumber
+
+            return  "APP#" + className + "." + methodName + "(" + fileName + ":" + lineNumber + ")"
+        }
+
+
         fun writeLog(cxt : Context, tag : String?, msg : String?) {
             val time = System.currentTimeMillis()
 //            val logPath = FileUtil.getStoragePath(cxt) + Constant.DEFAULT_APP_FILE_DIR + "/" + Constant.FILE_LOG_NAME_PREFIX + time + Constant.FILE_EXT_TXT

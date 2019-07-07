@@ -2,28 +2,24 @@ package com.example.shlim.basekotlinproject.activity
 
 import android.Manifest
 import android.accounts.AccountManager
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.shlim.basekotlinproject.BaseKotlinApplication
-import com.example.shlim.basekotlinproject.BuildConfig
-import com.example.shlim.basekotlinproject.Common.Constant
 import com.example.shlim.basekotlinproject.Common.RequestCode
-import com.example.shlim.basekotlinproject.Extensions.notificationmanger
-import com.example.shlim.basekotlinproject.Extensions.toast
 import com.example.shlim.basekotlinproject.R
 import com.example.shlim.basekotlinproject.Utils.DeviceUtil
-import com.example.shlim.basekotlinproject.Utils.FileUtil
 import com.example.shlim.basekotlinproject.Utils.LogUtil
 import com.example.shlim.basekotlinproject.Utils.Util
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    val TAG = MainActivity::class.simpleName
+    val TAG by lazy {
+        LogUtil.getTag()
+    }
 
 
     lateinit var mApp : BaseKotlinApplication
@@ -44,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         checkPermission()
-
         mApp = applicationContext as BaseKotlinApplication
 
         val serialNum = Util.getSerialNumber(this)
@@ -59,8 +54,8 @@ class MainActivity : AppCompatActivity() {
             DeviceUtil.chooseAccountIntent(this)
         }
 
-        val tt = Util.getExifOrientation(FileUtil.getStoragePath(this) + "profile_1544673647767.jpg")
-        LogUtil.d(TAG, "getExifOrientation degree : $tt" )
+//        val tt = Util.getExifOrientation(FileUtil.getStoragePath(this) + "profile_1544673647767.jpg")
+//        LogUtil.d(TAG, "getExifOrientation degree : $tt" )
         
     }
 
