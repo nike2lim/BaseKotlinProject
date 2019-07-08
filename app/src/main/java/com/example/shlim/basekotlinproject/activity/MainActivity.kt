@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         LogUtil.getTag()
     }
 
-
     lateinit var mApp : BaseKotlinApplication
 
     val permissions = arrayOf(

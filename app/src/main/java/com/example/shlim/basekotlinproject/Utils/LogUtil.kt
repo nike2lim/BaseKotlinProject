@@ -44,15 +44,19 @@ class LogUtil {
          * @return
          */
         fun getTag() : String {
-            val level = 4
-            val trace = Thread.currentThread().stackTrace[level]
-            val fileName = trace.fileName
-            val classPath = trace.className
-            val className = classPath.substring(classPath.lastIndexOf(".") + 1)
-            val methodName = trace.methodName
-            val lineNumber = trace.lineNumber
+            if(BuildConfig.DEBUG) {
+                val level = 4
+                val trace = Thread.currentThread().stackTrace[level]
+                val fileName = trace.fileName
+                val classPath = trace.className
+                val className = classPath.substring(classPath.lastIndexOf(".") + 1)
+                val methodName = trace.methodName
+                val lineNumber = trace.lineNumber
 
-            return  "APP#" + className + "." + methodName + "(" + fileName + ":" + lineNumber + ")"
+                return  "APP#" + className + "." + methodName + "(" + fileName + ":" + lineNumber + ")"
+            }else {
+                return ""
+            }
         }
 
 
